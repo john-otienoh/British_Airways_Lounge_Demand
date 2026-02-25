@@ -1,4 +1,7 @@
 # Modeling lounge eligibility at Heathrow Terminal 3
+
+## TASK ONE
+
 How using airline data and modeling helps British Airways forecast lounge demand and plan for future capacity planning.
 
 ## What you'll do
@@ -50,6 +53,7 @@ Instructions:
 **Note**: The dataset contains a large number of flights. You do not need to analyze all of them. Instead, select a representative sample (e.g., flights within a specific time window or set of destinations) that allows you to test your groupings and apply your assumptions meaningfully.
 
 You can complete this step using a simplified table format. Here’s an example structure to guide you:
+![alt text](https://cdn.theforage.com/vinternships/companyassets/tMjbs76F526fF5v3G/L3MQ8f6cYSkfoukmz/1747756528496/_British%20Airways%20-%20Task%201%20table%202%20(1).png)
 
 **Important Note**: While there is currently no Concorde Room at Terminal 3, your Tier 1 estimate may reflect passengers who would qualify for that level of service. This could help to inform whether a Tier 1 Lounge might be needed in the future. Make sure your modeling treats this is a hypothetical or potential space, not a confirmed development.
 
@@ -72,3 +76,52 @@ The assumptions you made and their reasoning
 How your model can scale to future or unknown schedules
  
 You can write brief but thoughtful responses directly into the table.
+
+```bash
+lounge-demand-forecast/
+│
+├── README.md
+├── requirements.txt
+├── LICENSE
+│
+├── data/
+│   ├── raw/
+│   │   └── BA_Summer_Schedule.xlsx
+│   ├── processed/
+│   │   ├── flights_clean.csv
+│   │   ├── lounge_lookup.csv
+│   │   └── eligibility_results.csv
+│   └── assumptions/
+│       └── eligibility_assumptions.xlsx
+│
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_create_lookup_table.ipynb
+│   ├── 03_apply_lookup_to_schedule.ipynb
+│   └── 04_capacity_forecast.ipynb
+│
+├── sql/
+│   ├── schema.sql
+│   ├── etl.sql
+│   └── kpi_queries.sql
+│
+├── models/
+│   ├── grouping_logic.py
+│   ├── eligibility_model.py
+│   └── forecast_model.py
+│
+├── dashboards/
+│   ├── Lounge_Demand.pbix
+│   └── screenshots/
+│
+├── reports/
+│   ├── lounge_lookup_table.xlsx
+│   ├── methodology.pdf
+│   └── presentation.pptx
+│
+└── docs/
+    ├── data_dictionary.md
+    ├── assumptions.md
+    └── project_plan.md
+```
+
