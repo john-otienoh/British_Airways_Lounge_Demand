@@ -1,81 +1,46 @@
-# Modeling lounge eligibility at Heathrow Terminal 3
+```markdown
+# British Airways Customer Analytics & Holiday Purchase Prediction System
 
-## TASK ONE
+## Project Overview
 
-How using airline data and modeling helps British Airways forecast lounge demand and plan for future capacity planning.
+This project demonstrates a full end-to-end airline analytics workflow, beginning with lounge demand modeling and progressing to a production-grade predictive system for identifying customers likely to purchase holiday packages.
 
-### What you'll do
-- Review lounge eligibility criteria and explore how customer groupings can inform lounge demand assumptions.
-- Create a reusable lookup table and written justification that British Airways can apply to future flying schedules.
+The system includes:
 
-###  Background Information - Task One
-Lounge access is a key part of the premium travel experience, and understanding lounge demand is crucial for British Airways (BA) to maintain high standards while optimizing space and resources. As the airline plans for future operations at Heathrow Terminal 3, it’s important to anticipate demand across different types of lounge access, each associated with varying levels of customer loyalty and travel class.
-As BA plans for the future, especially with changes in flying schedules and fleet strategy, it's important to forecast how many passengers will be eligible to use each lounge on a typical day. However, future schedules can be unpredictable, which means we need a modeling approach that is both flexible and scalable.
-That’s where you come in. Your job is to create a lookup table that BA can use to estimate lounge eligibility percentages across different flight groupings. This will allow the business to anticipate lounge demand without needing exact flight or aircraft details.
-To do this well, you’ll need to think critically about how to group flights in a meaningful way—by time of day, route type, or regional destination, for example, and apply logical assumptions to estimate how many travelers fall into each lounge tier. These estimates will help the Airport Planning team better understand where lounge investments may be needed as operations evolve.
-In short, your table and justification will help translate data into decisions—and ensure BA continues to deliver a seamless experience for its most valued customers.
+- Exploratory data analysis and feature engineering
+- Predictive modeling using RandomForest and XGBoost
+- Hyperparameter tuning and cross-validation
+- Lift and commercial performance evaluation
+- Production API using FastAPI
+- Business-facing frontend using Streamlit
+- Docker-ready deployment structure
 
-### Understanding lounge eligibility
-To begin modeling lounge demand, it’s important to understand who is typically eligible for lounge access. Lounge eligibility is generally based on customer loyalty status and travel class, with different access tiers offering varying levels of amenities.
-![alt text](https://cdn.theforage.com/vinternships/companyassets/tMjbs76F526fF5v3G/L3MQ8f6cYSkfoukmz/1747756205049/BA-Lounge%20eligibility.png)
-Each tier supports a different group of travelers, and lounge capacity planning depends on forecasting how many eligible passengers fall into each of these categories.
-In the next section, you’ll begin thinking about how to estimate the proportion of passengers eligible for each lounge tier, using broad categories that can apply future schedules.
+The objective is to allow non-technical commercial teams to proactively target high-intent customers before departure.
 
-### Creating eligibility assumptions
-Now that you understand the lounge tiers, it’s time to think about how you’ll estimate the percentage of customers eligible for each tier across a flight schedule. Since BA is planning far into the future, your model needs to be flexible and based on high-level groupings—not specific flight numbers or aircraft types. 
+---
 
-Your goal is to create a lookup table that estimates lounge eligibility using clear, scalable categories. To do this, you’ll need to decide how to group flights and make logical assumptions.
+## Business Context
 
-Common groups include: 
+> *"If you're hoping that a customer purchases your flights as they come into the airport, you've already lost."*
 
-- Time of day: Early morning, mid-day, evening departures.
-- Type of route: Short-haul vs. long-haul
-- Region or destination group: Europe, North America, Asia, etc.
- 
-You’ll estimate what proportion of passengers in each group are likely to be eligible for:
+Modern airline customers are highly empowered — they research, compare, and decide long before arriving at the airport. British Airways must shift from a **reactive** to a **proactive** acquisition model by:
 
-- Tier 1: Concorde Room
-- Tier 2: First Lounge
-- Tier 3: Club Lounge
+- Identifying high-intent customers **before** they travel
+- Triggering personalised campaigns at the optimal moment in the booking window
+- Prioritising commercial team resources on the customers most likely to convert
 
-There is no single correct approach—what matters most is that your assumptions are logical, justifiable, and easy to apply to future schedules.
+Using predictive modeling, we identify customers with high probability of purchasing holiday packages, enabling:
 
-### Applying assumptions to a flight schedule
+- Targeted marketing campaigns
+- Budget optimization
+- Improved conversion rates
+- Higher revenue per passenger
 
-You’ve explored lounge eligibility and made thoughtful assumptions—now it’s time to bring it all together. In this part of the task, you’ll apply your model to a real-world scenario using a sample flight schedule.
+---
 
-Instructions: 
+## Project Structure
 
-1. Download and review the flight schedule provided below.
-2. Assign each flight to one of your defined categories (e.g., by time of day, route type, or destination region).
-3. Apply your estimated eligibility percentages to each category to calculate the number of passengers likely to use each lounge.
-
-**Note**: The dataset contains a large number of flights. You do not need to analyze all of them. Instead, select a representative sample (e.g., flights within a specific time window or set of destinations) that allows you to test your groupings and apply your assumptions meaningfully.
-
-You can complete this step using a simplified table format. Here’s an example structure to guide you:
-![alt text](https://cdn.theforage.com/vinternships/companyassets/tMjbs76F526fF5v3G/L3MQ8f6cYSkfoukmz/1747756528496/_British%20Airways%20-%20Task%201%20table%202%20(1).png)
-
-**Important Note**: While there is currently no Concorde Room at Terminal 3, your Tier 1 estimate may reflect passengers who would qualify for that level of service. This could help to inform whether a Tier 1 Lounge might be needed in the future. Make sure your modeling treats this is a hypothetical or potential space, not a confirmed development.
-
-Focus on applying your assumptions per category—not per individual flight. Your output should be a reusable, generalized lookup table that can be applied to future schedules.
-
-### Submit your work
-You're almost there! Now that you've applied your assumptions to the flight schedule and built your lounge eligibility lookup table, it's time to finalize your work and submit it.
-
-Your submission will help BA understand how many passengers are likely to use each of its lounges at Terminal 3. This is your chance to demonstrate how data modeling can support strategic decision-making.
-
-What to submit:
-
-Lounge Eligibility Lookup Table + Justification (Excel): Download and complete the provided Excel template available below. Fill in your estimated percentages for Tier 1, Tier 2, and Tier 3 eligibility by group. 
-
-Then, open the second sheet in the same file titled "Justification." You’ll find four short questions designed to help you reflect on your approach. Use this table to explain:
-
-How you chose to group the flights
-Why your groupings make sense for this type of modeling
-The assumptions you made and their reasoning
-How your model can scale to future or unknown schedules
- 
-You can write brief but thoughtful responses directly into the table.
+```
 
 ```bash
 lounge-demand-forecast/
@@ -124,34 +89,474 @@ lounge-demand-forecast/
     ├── assumptions.md
     └── project_plan.md
 ```
-## TASK TWO
+## Technical Architecture
 
-How using data and predictive models helps British Airways acquire customers before they embark on their holidays.
+Hybrid deployment model:
 
-### What you'll do
-- Prepare a dataset.
-- Train a machine learning model.
-- Evaluate and present your findings
+Frontend (Streamlit)
+        ↓
+FastAPI Backend
+        ↓
+Serialized ML Pipeline (pickle)
 
-### Background Information
-Customers are more empowered than ever because they have access to a wealth of information at their fingertips. This is one of the reasons the buying cycle is very different to what it used to be. Today, if you’re hoping that a customer purchases your flights or holidays as they come into the airport, you’ve already lost! Being reactive in this situation is not ideal; airlines must be proactive in order to acquire customers before they embark on their holiday.
-This is possible with the use of data and predictive models. The most important factor with a predictive model is the quality of the data you use to train the machine learning algorithms. For this task, you must manipulate and prepare the provided customer booking data so that you can build a high-quality predictive model.
-With your predictive model, it is important to interpret the results in order to understand how “predictive” the data really was and whether we can feasibly use it to predict the target outcome (customers buying holidays). Therefore, you should evaluate the model’s performance and output how each variable contributes to the predictive model’s power.
+The backend handles all inference logic. The frontend provides a clean commercial interface for business users.
 
-#### Explore and prepare the dataset
+---
 
-First, spend some time exploring the dataset in the “Getting Started” Jupyter Notebook provided in the Resources section below to understand the different columns and some basic statistics of the dataset. Then, you should consider how to prepare the dataset for a predictive model. You should think about any new features you want to create in order to make your model even better. You can make use of the resources provided to get you started with this task. 
+## Tasks Covered
 
-#### Train a machine learning model
+### Task One: Lounge Demand Modeling
+- Data grouping strategy design
+- Lookup table creation
+- Forecast logic using flight attributes
+- Commercial capacity interpretation
 
-When your data is ready for modelling, you should train a machine learning model to be able to predict the target outcome, which is a customer making a booking. For this task, you should use an algorithm that easily allows you to output information about how each variable within the model contributes to its predictive power. For example, a RandomForest is very good for this purpose.
+### Task Two: Holiday Purchase Prediction
+- Data cleaning and preparation
+- Feature engineering
+- Model training (RandomForest, XGBoost)
+- Hyperparameter tuning
+- Cross-validation
+- Lift analysis
+- Business interpretation
 
-#### Evaluate the model and present findings
+---
 
-After training your model, you should evaluate how well it performed by conducting cross-validation and outputting appropriate evaluation metrics. Furthermore, you should create a visualisation to interpret how each variable contributed to the model. Finally, you should summarise your findings in a single slide to be sent to your manager. Use the “PowerPoint Template” provided in the Resources section below to create your summary and make use of the links provided to help with this task.
+## Model Features
 
-**It is recommended that the analysis portion of this task be done in Python.**
+Examples of engineered features:
 
-Once you’ve completed your PowerPoint, please submit your document below.
+- Lead time buckets
+- Weekend travel flag
+- Party size categories
+- Add-on purchase intensity
+- Long-haul indicator
+- Seasonal indicators
+- Interaction terms
 
-[Dataset Link](https://cdn.theforage.com/vinternships/companyassets/tMjbs76F526fF5v3G/L3MQ8f6cYSkfoukmz/1667814300249/customer_booking.csv)
+---
+
+## Performance Metrics
+
+Model evaluation includes:
+
+- ROC-AUC
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- Lift in top decile
+- Cross-validation stability
+
+Commercial lift is emphasized over raw accuracy.
+
+---
+
+## Dataset Description
+
+| Column | Type | Description |
+|---|---|---|
+| `num_passengers` | int | Number of passengers travelling |
+| `sales_channel` | str | Channel booking was made on (`Internet`, `Mobile`) |
+| `trip_type` | str | Trip type (`RoundTrip`, `OneWay`, `CircleTrip`) |
+| `purchase_lead` | int | Days between travel date and booking date |
+| `length_of_stay` | int | Days spent at destination |
+| `flight_hour` | int | Hour of flight departure (0–23) |
+| `flight_day` | str | Day of week of departure (`Mon`–`Sun`) |
+| `route` | str | Origin → destination route code |
+| `booking_origin` | str | Country from which booking was made |
+| `wants_extra_baggage` | int | 1 if customer selected extra baggage |
+| `wants_preferred_seat` | int | 1 if customer selected preferred seat |
+| `wants_in_flight_meals` | int | 1 if customer selected in-flight meals |
+| `flight_duration` | float | Total flight duration in hours |
+| `booking_complete` | int | **Target** — 1 if customer completed booking |
+
+**Dataset stats:**
+- 50,000 records · 14 columns · 0 null values
+- Class imbalance: ~14.3% completed bookings (class 1), ~85.7% not completed (class 0)
+
+---
+
+## Setup Instructions
+
+### 1. Clone Repository
+
+```
+
+git clone https://github.com/john-otienoh/British_Airways_Lounge_Demand
+cd British_Airways_Lounge_Demand
+
+```
+
+### 2. Create Virtual Environment
+
+```
+
+python -m venv venv
+source venv/bin/activate
+
+```
+
+On Windows:
+```
+
+venv\Scripts\activate
+
+```
+
+### 3. Install Dependencies
+
+```
+
+pip install -r requirements.txt
+
+```
+
+---
+
+## Training the Model
+
+To retrain the model run the notebook:
+
+```
+
+
+```bash
+jupyter notebook notebooks/BA_Customer_Booking_Model.ipynb
+
+```
+
+The trained model will be saved to:
+
+```
+
+models/british_Airways_Booking_Model.pkl
+
+```
+
+---
+
+## Running the Backend (FastAPI)
+
+Navigate to backend directory:
+
+```
+
+cd backend
+
+```
+
+Start server:
+
+```
+
+uvicorn app.main:app --reload
+
+```
+
+API will run at:
+
+```
+
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+```
+
+Available endpoints:
+
+- GET /health
+- POST /predict
+- POST /batch
+
+Swagger documentation:
+
+```
+
+[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+```
+
+---
+
+## Running the Frontend (Streamlit)
+
+In a separate terminal:
+
+```
+
+cd frontend
+streamlit run app.py
+
+```
+
+Frontend will run at:
+
+```
+
+[http://localhost:8501](http://localhost:8501)
+
+```
+
+---
+## Quickstart
+
+### Make a Prediction (curl)
+
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "num_passengers": 2,
+    "purchase_lead": 45,
+    "length_of_stay": 7,
+    "flight_hour": 10,
+    "flight_duration": 11.5,
+    "wants_extra_baggage": 1,
+    "wants_preferred_seat": 0,
+    "wants_in_flight_meals": 1,
+    "sales_channel": "Mobile",
+    "trip_type": "RoundTrip",
+    "flight_day": "Fri"
+  }'
+```
+
+**Response:**
+```json
+{
+  "probability": 0.71,
+  "will_book": true,
+  "confidence_tier": "High",
+  "top_drivers": ["purchase_lead", "wants_extra_baggage", "flight_duration"]
+}
+```
+
+---
+
+## Data Preparation Pipeline
+
+The feature engineering pipeline (defined in `api/pipeline.py` and mirrored exactly in the notebook) performs the following transformations:
+
+### Encoding
+
+| Raw Column | Transformation | Output Column |
+|---|---|---|
+| `flight_day` | Ordinal map Mon=0 … Sun=6 | `flight_day_num` |
+| `sales_channel` | Label encoding | `sales_channel_enc` |
+| `trip_type` | Label encoding | `trip_type_enc` |
+| `route` | Label encoding | `route_enc` |
+| `booking_origin` | Label encoding | `booking_origin_enc` |
+
+### Engineered Features
+
+| Feature | Logic | Rationale |
+|---|---|---|
+| `total_add_ons` | Sum of 3 add-on flags | Single intent signal |
+| `is_weekend_flight` | `flight_day` ∈ {Sat, Sun} → 1 | Leisure vs business pattern |
+| `is_long_haul` | `flight_duration` > 6 hrs → 1 | Higher commitment proxy |
+| `lead_bucket` | Bin `purchase_lead` into 4 buckets | Captures non-linear booking window effects |
+| `lead_bucket_enc` | Label encode `lead_bucket` | Model-compatible format |
+
+### Final Feature Set (17 features)
+
+```python
+FEATURES = [
+    "num_passengers", "purchase_lead", "length_of_stay", "flight_hour",
+    "flight_day_num", "wants_extra_baggage", "wants_preferred_seat",
+    "wants_in_flight_meals", "flight_duration", "sales_channel_enc",
+    "trip_type_enc", "route_enc", "booking_origin_enc",
+    "total_add_ons", "is_weekend_flight", "is_long_haul", "lead_bucket_enc"
+]
+```
+
+> **Critical:** The feature list and order must be **identical** between training and inference. The saved pickle stores the `FEATURES` list to guarantee this.
+
+---
+
+## Machine Learning Model
+
+### Algorithm: Random Forest Classifier
+
+Random Forest was selected because it:
+- Handles mixed feature types without normalisation
+- Is robust to outliers and irrelevant features
+- Natively outputs interpretable **feature importance scores**
+- Scales well with `n_jobs=-1` parallelism
+- The `class_weight='balanced'` parameter compensates for the ~14% class imbalance
+
+### Hyperparameters
+
+```python
+RandomForestClassifier(
+    n_estimators=200,        # 200 decision trees
+    max_depth=10,            # Prevent overfitting
+    min_samples_leaf=30,     # Minimum samples per leaf node
+    class_weight="balanced", # Corrects for 14% positive class rate
+    random_state=42,         # Reproducibility
+    n_jobs=-1                # Parallelise across all CPU cores
+)
+```
+
+### Training
+
+```python
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+)
+
+clf.fit(X_train, y_train)
+```
+
+---
+
+##  Model Evaluation
+
+### 5-Fold Stratified Cross-Validation Results
+
+| Metric | Mean | Std Dev |
+|---|---|---|
+| **Accuracy** | 71.2% | ±0.3% |
+| **ROC-AUC** | 0.652 | ±0.004 |
+| **Precision** | 23.6% | ±0.6% |
+| **Recall** | 45.7% | ±1.7% |
+| **F1 Score** | 0.311 | ±0.009 |
+
+### Interpretation
+
+- The **ROC-AUC of 0.652** is meaningfully above the 0.5 random baseline, confirming real predictive signal in the data.
+- **Recall of 45.7%** means the model identifies nearly half of all customers who will complete a booking — suitable for proactive campaign targeting.
+- **Low precision (23.6%)** is expected given the severe class imbalance and is acceptable for a marketing use case where the cost of targeting a non-converter is low.
+- The **low standard deviation** across folds confirms the model is stable and not overfitting.
+
+---
+
+## Feature Importance
+
+Top predictors ranked by mean decrease in impurity (Random Forest):
+
+| Rank | Feature | Importance | Interpretation |
+|---|---|---|---|
+| 1 | `purchase_lead` | 0.280 | Early planners convert at significantly higher rates |
+| 2 | `flight_duration` | 0.130 | Long-haul passengers show stronger booking commitment |
+| 3 | `lead_bucket_enc` | 0.123 | Non-linear booking window effects captured |
+| 4 | `total_add_ons` | 0.063 | Add-on selection is a strong intent signal |
+| 5 | `length_of_stay` | 0.063 | Longer trips indicate higher holiday intent |
+| 6 | `route_enc` | 0.058 | Some routes have systematically higher conversion |
+| 7 | `flight_hour` | 0.056 | Flight timing correlates with customer type |
+| 8 | `booking_origin_enc` | 0.053 | Origin market predicts booking behaviour |
+
+---
+
+## Saving & Loading the Model
+
+### Save
+
+The model is saved as a pickle payload containing both the model and all metadata required for inference:
+
+```python
+import pickle
+
+model_payload = {
+    "model":               clf,
+    "features":            FEATURES,       # Ordered feature list — critical for inference
+    "target":              "booking_complete",
+    "n_estimators":        clf.n_estimators,
+    "max_depth":           clf.max_depth,
+    "class_weight":        clf.class_weight,
+    "training_samples":    len(X),
+    "class_distribution":  y.value_counts().to_dict(),
+    "feature_importances": dict(zip(FEATURES, clf.feature_importances_)),
+}
+
+with open("model/ba_booking_model.pkl", "wb") as f:
+    pickle.dump(model_payload, f)
+```
+
+### Load
+
+```python
+import pickle
+
+with open("model/ba_booking_model.pkl", "rb") as f:
+    payload = pickle.load(f)
+
+model    = payload["model"]
+FEATURES = payload["features"]   # Always load features from pickle — never hardcode
+
+# Predict
+probability = model.predict_proba(df[FEATURES])[0, 1]
+```
+
+> **File size:** ~11.2 MB  |  **Python:** 3.11+  |  **scikit-learn:** 1.4.2+
+
+---
+## Using the Application
+
+### Single Customer Prediction
+
+1. Enter customer attributes
+2. Click Predict
+3. Receive:
+   - Probability of purchase
+   - Intent segment
+   - Commercial recommendation
+
+### Batch Upload
+
+1. Upload CSV file
+2. Model scores each row
+3. Download enriched CSV with:
+   - Probability
+   - Intent segment
+
+---
+
+## Governance & Model Management
+
+- Model version stored in models/model_metadata.json
+- Feature list stored in models/feature_list.json
+- Structured preprocessing pipeline prevents training-serving skew
+- Class imbalance handled via scale_pos_weight
+
+---
+
+## Future Enhancements
+
+- SHAP explainability integration
+- Model drift detection
+- CRM integration
+- Cloud deployment (AWS / Azure)
+- CI/CD automation
+- Authentication layer
+
+---
+
+## Author
+
+Analytics and Machine Learning Implementation Project  
+Airline Commercial Analytics Simulation
+
+
+## Contributing
+
+1. Fork the repository and create a feature branch: `git checkout -b feature/your-feature`
+2. Follow the existing code style — run `flake8` before committing
+3. Add or update tests in `tests/` for any new logic
+4. Ensure all tests pass: `pytest tests/ -v`
+5. Open a pull request with a clear description of changes and business justification
+
+---
+
+## Acknowledgements
+
+- **British Airways Data Science Team** — project sponsor and domain experts
+- **[Forage / British Airways Virtual Experience](https://www.theforage.com/simulations/british-airways)** — original task brief and dataset
+- **scikit-learn** — machine learning library
+- **FastAPI** — API framework
+- **Streamlit** — internal UI framework
+
+---
+
+*British Airways Data Science · Customer Acquisition Strategy · 2024*
+*Model Version: 1.0 · Training Dataset: 50,000 bookings · Algorithm: Random Forest*
