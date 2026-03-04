@@ -1,14 +1,52 @@
-```markdown
-# British Airways Customer Analytics & Holiday Purchase Prediction System
+# ✈️ British Airways — Customer Analytics & Holiday Purchase Prediction System
 
-## Project Overview
+> **Proactive customer acquisition using machine learning.**
+> A production-grade predictive system that identifies customers likely to purchase holiday packages, enabling British Airways' commercial teams to target high-intent customers *before* they travel.
 
-This project demonstrates a full end-to-end airline analytics workflow, beginning with lounge demand modeling and progressing to a production-grade predictive system for identifying customers likely to purchase holiday packages.
+[![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python)](https://python.org)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4.2-orange?style=flat-square&logo=scikit-learn)](https://scikit-learn.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.35-red?style=flat-square&logo=streamlit)](https://streamlit.io)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker)](https://docker.com)
+[![License](https://img.shields.io/badge/License-Internal-lightgrey?style=flat-square)]()
+
+---
+
+## 📋 Table of Contents
+
+1. [Project Overview](#1-project-overview)
+2. [Business Context](#2-business-context)
+3. [Project Structure](#3-project-structure)
+4. [Technical Architecture](#4-technical-architecture)
+5. [Tasks Covered](#5-tasks-covered)
+6. [Dataset Description](#6-dataset-description)
+7. [Setup Instructions](#7-setup-instructions)
+8. [Training the Model](#8-training-the-model)
+9. [Running the Backend (FastAPI)](#9-running-the-backend-fastapi)
+10. [Running the Frontend (Streamlit)](#10-running-the-frontend-streamlit)
+11. [Quickstart](#11-quickstart)
+12. [Data Preparation Pipeline](#12-data-preparation-pipeline)
+13. [Machine Learning Model](#13-machine-learning-model)
+14. [Model Evaluation](#14-model-evaluation)
+15. [Feature Importance](#15-feature-importance)
+16. [Model Features](#16-model-features)
+17. [Saving & Loading the Model](#17-saving--loading-the-model)
+18. [Using the Application](#18-using-the-application)
+19. [Governance & Model Management](#19-governance--model-management)
+20. [Future Enhancements](#20-future-enhancements)
+21. [Contributing](#21-contributing)
+22. [Acknowledgements](#22-acknowledgements)
+
+---
+
+## 1. Project Overview
+
+This project demonstrates a full end-to-end airline analytics workflow, beginning with lounge demand modelling and progressing to a production-grade predictive system for identifying customers likely to purchase holiday packages.
 
 The system includes:
 
 - Exploratory data analysis and feature engineering
-- Predictive modeling using RandomForest and XGBoost
+- Predictive modelling using RandomForest and XGBoost
 - Hyperparameter tuning and cross-validation
 - Lift and commercial performance evaluation
 - Production API using FastAPI
@@ -19,7 +57,7 @@ The objective is to allow non-technical commercial teams to proactively target h
 
 ---
 
-## Business Context
+## 2. Business Context
 
 > *"If you're hoping that a customer purchases your flights as they come into the airport, you've already lost."*
 
@@ -29,20 +67,18 @@ Modern airline customers are highly empowered — they research, compare, and de
 - Triggering personalised campaigns at the optimal moment in the booking window
 - Prioritising commercial team resources on the customers most likely to convert
 
-Using predictive modeling, we identify customers with high probability of purchasing holiday packages, enabling:
+Using predictive modelling, we identify customers with high probability of purchasing holiday packages, enabling:
 
 - Targeted marketing campaigns
-- Budget optimization
+- Budget optimisation
 - Improved conversion rates
 - Higher revenue per passenger
 
 ---
 
-## Project Structure
+## 3. Project Structure
 
 ```
-
-```bash
 lounge-demand-forecast/
 │
 ├── README.md
@@ -73,7 +109,16 @@ lounge-demand-forecast/
 ├── models/
 │   ├── grouping_logic.py
 │   ├── eligibility_model.py
-│   └── forecast_model.py
+│   ├── forecast_model.py
+│   ├── model_metadata.json
+│   └── feature_list.json
+│
+├── backend/
+│   └── app/
+│       └── main.py
+│
+├── frontend/
+│   └── app.py
 │
 ├── dashboards/
 │   ├── Lounge_Demand.pbix
@@ -89,29 +134,34 @@ lounge-demand-forecast/
     ├── assumptions.md
     └── project_plan.md
 ```
-## Technical Architecture
 
-Hybrid deployment model:
+---
 
+## 4. Technical Architecture
+
+Hybrid deployment model — the backend handles all inference logic; the frontend provides a clean commercial interface for business users.
+
+```
 Frontend (Streamlit)
         ↓
 FastAPI Backend
         ↓
-Serialized ML Pipeline (pickle)
-
-The backend handles all inference logic. The frontend provides a clean commercial interface for business users.
+Serialised ML Pipeline (pickle)
+```
 
 ---
 
-## Tasks Covered
+## 5. Tasks Covered
 
-### Task One: Lounge Demand Modeling
+### Task One — Lounge Demand Modelling
+
 - Data grouping strategy design
 - Lookup table creation
 - Forecast logic using flight attributes
 - Commercial capacity interpretation
 
-### Task Two: Holiday Purchase Prediction
+### Task Two — Holiday Purchase Prediction
+
 - Data cleaning and preparation
 - Feature engineering
 - Model training (RandomForest, XGBoost)
@@ -122,37 +172,7 @@ The backend handles all inference logic. The frontend provides a clean commercia
 
 ---
 
-## Model Features
-
-Examples of engineered features:
-
-- Lead time buckets
-- Weekend travel flag
-- Party size categories
-- Add-on purchase intensity
-- Long-haul indicator
-- Seasonal indicators
-- Interaction terms
-
----
-
-## Performance Metrics
-
-Model evaluation includes:
-
-- ROC-AUC
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Lift in top decile
-- Cross-validation stability
-
-Commercial lift is emphasized over raw accuracy.
-
----
-
-## Dataset Description
+## 6. Dataset Description
 
 | Column | Type | Description |
 |---|---|---|
@@ -177,130 +197,86 @@ Commercial lift is emphasized over raw accuracy.
 
 ---
 
-## Setup Instructions
+## 7. Setup Instructions
 
-### 1. Clone Repository
+### 1. Clone the Repository
 
-```
-
+```bash
 git clone https://github.com/john-otienoh/British_Airways_Lounge_Demand
 cd British_Airways_Lounge_Demand
-
 ```
 
-### 2. Create Virtual Environment
+### 2. Create a Virtual Environment
 
-```
-
+```bash
 python -m venv venv
-source venv/bin/activate
-
-```
-
-On Windows:
-```
-
-venv\Scripts\activate
-
+source venv/bin/activate        # macOS / Linux
+venv\Scripts\activate           # Windows
 ```
 
 ### 3. Install Dependencies
 
-```
-
+```bash
 pip install -r requirements.txt
-
 ```
 
 ---
 
-## Training the Model
+## 8. Training the Model
 
-To retrain the model run the notebook:
-
-```
-
+Run the analysis notebook to train and serialise the model:
 
 ```bash
 jupyter notebook notebooks/BA_Customer_Booking_Model.ipynb
-
 ```
 
 The trained model will be saved to:
 
 ```
-
 models/british_Airways_Booking_Model.pkl
-
 ```
 
 ---
 
-## Running the Backend (FastAPI)
+## 9. Running the Backend (FastAPI)
 
-Navigate to backend directory:
+Navigate to the backend directory and start the server:
 
-```
-
+```bash
 cd backend
-
-```
-
-Start server:
-
-```
-
 uvicorn app.main:app --reload
-
 ```
 
-API will run at:
-
-```
-
-[http://127.0.0.1:8000](http://127.0.0.1:8000)
-
-```
+The API will be available at `http://127.0.0.1:8000`
 
 Available endpoints:
 
-- GET /health
-- POST /predict
-- POST /batch
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/health` | Service health check |
+| `POST` | `/predict` | Single customer prediction |
+| `POST` | `/batch` | Batch CSV scoring |
 
-Swagger documentation:
-
-```
-
-[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-```
+Interactive Swagger documentation: `http://127.0.0.1:8000/docs`
 
 ---
 
-## Running the Frontend (Streamlit)
+## 10. Running the Frontend (Streamlit)
 
 In a separate terminal:
 
-```
-
+```bash
 cd frontend
 streamlit run app.py
-
 ```
 
-Frontend will run at:
-
-```
-
-[http://localhost:8501](http://localhost:8501)
-
-```
+The frontend will be available at `http://localhost:8501`
 
 ---
-## Quickstart
 
-### Make a Prediction (curl)
+## 11. Quickstart
+
+### Make a Single Prediction (curl)
 
 ```bash
 curl -X POST http://localhost:8000/predict \
@@ -321,6 +297,7 @@ curl -X POST http://localhost:8000/predict \
 ```
 
 **Response:**
+
 ```json
 {
   "probability": 0.71,
@@ -332,9 +309,9 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-## Data Preparation Pipeline
+## 12. Data Preparation Pipeline
 
-The feature engineering pipeline (defined in `api/pipeline.py` and mirrored exactly in the notebook) performs the following transformations:
+The feature engineering pipeline (`api/pipeline.py`, mirrored exactly in the notebook) performs the following transformations:
 
 ### Encoding
 
@@ -368,20 +345,21 @@ FEATURES = [
 ]
 ```
 
-> **Critical:** The feature list and order must be **identical** between training and inference. The saved pickle stores the `FEATURES` list to guarantee this.
+> ⚠️ **Critical:** The feature list and order must be **identical** between training and inference. The saved pickle stores the `FEATURES` list to guarantee this.
 
 ---
 
-## Machine Learning Model
+## 13. Machine Learning Model
 
-### Algorithm: Random Forest Classifier
+### Algorithm — Random Forest Classifier
 
 Random Forest was selected because it:
+
 - Handles mixed feature types without normalisation
 - Is robust to outliers and irrelevant features
 - Natively outputs interpretable **feature importance scores**
 - Scales well with `n_jobs=-1` parallelism
-- The `class_weight='balanced'` parameter compensates for the ~14% class imbalance
+- `class_weight='balanced'` compensates for the ~14% class imbalance
 
 ### Hyperparameters
 
@@ -410,7 +388,7 @@ clf.fit(X_train, y_train)
 
 ---
 
-##  Model Evaluation
+## 14. Model Evaluation
 
 ### 5-Fold Stratified Cross-Validation Results
 
@@ -429,9 +407,11 @@ clf.fit(X_train, y_train)
 - **Low precision (23.6%)** is expected given the severe class imbalance and is acceptable for a marketing use case where the cost of targeting a non-converter is low.
 - The **low standard deviation** across folds confirms the model is stable and not overfitting.
 
+> Commercial lift is emphasised over raw accuracy.
+
 ---
 
-## Feature Importance
+## 15. Feature Importance
 
 Top predictors ranked by mean decrease in impurity (Random Forest):
 
@@ -448,7 +428,21 @@ Top predictors ranked by mean decrease in impurity (Random Forest):
 
 ---
 
-## Saving & Loading the Model
+## 16. Model Features
+
+Examples of engineered features used across the full pipeline:
+
+- Lead time buckets
+- Weekend travel flag
+- Party size categories
+- Add-on purchase intensity
+- Long-haul indicator
+- Seasonal indicators
+- Interaction terms
+
+---
+
+## 17. Saving & Loading the Model
 
 ### Save
 
@@ -488,57 +482,54 @@ FEATURES = payload["features"]   # Always load features from pickle — never ha
 probability = model.predict_proba(df[FEATURES])[0, 1]
 ```
 
-> **File size:** ~11.2 MB  |  **Python:** 3.11+  |  **scikit-learn:** 1.4.2+
+> **File size:** ~11.2 MB &nbsp;|&nbsp; **Python:** 3.11+ &nbsp;|&nbsp; **scikit-learn:** 1.4.2+
 
 ---
-## Using the Application
+
+## 18. Using the Application
 
 ### Single Customer Prediction
 
-1. Enter customer attributes
-2. Click Predict
+1. Enter customer attributes in the Streamlit form
+2. Click **Predict**
 3. Receive:
    - Probability of purchase
-   - Intent segment
+   - Intent segment (High / Medium / Low)
    - Commercial recommendation
 
 ### Batch Upload
 
-1. Upload CSV file
-2. Model scores each row
-3. Download enriched CSV with:
-   - Probability
-   - Intent segment
+1. Upload a CSV file via the Streamlit interface
+2. The model scores each row automatically
+3. Download the enriched CSV containing:
+   - Booking probability per customer
+   - Intent segment label
 
 ---
 
-## Governance & Model Management
+## 19. Governance & Model Management
 
-- Model version stored in models/model_metadata.json
-- Feature list stored in models/feature_list.json
+- Model version stored in `models/model_metadata.json`
+- Feature list stored in `models/feature_list.json`
 - Structured preprocessing pipeline prevents training-serving skew
-- Class imbalance handled via scale_pos_weight
+- Class imbalance handled via `class_weight="balanced"` (Random Forest) / `scale_pos_weight` (XGBoost)
 
 ---
 
-## Future Enhancements
+## 20. Future Enhancements
 
-- SHAP explainability integration
-- Model drift detection
-- CRM integration
-- Cloud deployment (AWS / Azure)
-- CI/CD automation
-- Authentication layer
+| Priority | Enhancement | Expected Impact |
+|---|---|---|
+| High | SHAP explainability integration | Per-prediction driver transparency |
+| High | Model drift detection | Catch performance degradation early |
+| Medium | CRM integration | Push scores directly to marketing tools |
+| Medium | Cloud deployment (AWS / Azure) | Scale to production workloads |
+| Medium | CI/CD automation | Automate retraining on new data |
+| Low | Authentication layer | Restrict API to authorised users only |
 
 ---
 
-## Author
-
-Analytics and Machine Learning Implementation Project  
-Airline Commercial Analytics Simulation
-
-
-## Contributing
+## 21. Contributing
 
 1. Fork the repository and create a feature branch: `git checkout -b feature/your-feature`
 2. Follow the existing code style — run `flake8` before committing
@@ -548,7 +539,7 @@ Airline Commercial Analytics Simulation
 
 ---
 
-## Acknowledgements
+## 22. Acknowledgements
 
 - **British Airways Data Science Team** — project sponsor and domain experts
 - **[Forage / British Airways Virtual Experience](https://www.theforage.com/simulations/british-airways)** — original task brief and dataset

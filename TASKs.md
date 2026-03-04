@@ -110,7 +110,9 @@ Once you’ve completed your PowerPoint, please submit your document below.
 ### Resources
 
 [Task 1 Project Description](https://www.theforage.com/virtual-experience/NjynCWzGSaWXQCxSX/british-airways/data-science-yqoz/modeling-lounge-eligibility-at-heathrow-terminal-3)
+
 [Task 2 Project Description](https://www.theforage.com/virtual-experience/NjynCWzGSaWXQCxSX/british-airways/data-science-yqoz/predicting-customer-buying-behaviour)
 
 [British Airways Customer Bookings Dataset](https://cdn.theforage.com/vinternships/companyassets/tMjbs76F526fF5v3G/L3MQ8f6cYSkfoukmz/1667814300249/customer_booking.csv)
+
 [British Airways Summer Schdule Dataset](https://cdn.theforage.com/vinternships/companyassets/tMjbs76F526fF5v3G/L3MQ8f6cYSkfoukmz/1747756641734/British%20Airways%20Summer%20Schedule%20Dataset%20-%20Forage%20Data%20Science%20Task%201.xlsx)
