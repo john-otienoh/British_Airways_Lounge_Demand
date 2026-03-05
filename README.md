@@ -79,61 +79,68 @@ Using predictive modelling, we identify customers with high probability of purch
 ## 3. Project Structure
 
 ```
-lounge-demand-forecast/
+British_Airways_Lounge-Demand/
 │
 ├── README.md
+├── TASKs.md
 ├── requirements.txt
 ├── LICENSE
 │
 ├── data/
 │   ├── raw/
-│   │   └── BA_Summer_Schedule.xlsx
+│   │   ├── data.xlsx
+│   │   └── customer_booking.csv
+│   │
 │   ├── processed/
-│   │   ├── flights_clean.csv
-│   │   ├── lounge_lookup.csv
-│   │   └── eligibility_results.csv
+│   │   └── flights.csv
+│   │
 │   └── assumptions/
-│       └── eligibility_assumptions.xlsx
+│       └── John_Otienoh_British_Airways_Lounge_Eligibility_Lookup_Submission_Task_1.xlsx
 │
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb
 │   ├── 02_create_lookup_table.ipynb
 │   ├── 03_apply_lookup_to_schedule.ipynb
-│   └── 04_capacity_forecast.ipynb
-│
-├── sql/
-│   ├── schema.sql
-│   ├── etl.sql
-│   └── kpi_queries.sql
+│   ├── 04_capacity_forecast.ipynb
+│   └── BAA_Customer_Booking_Model.ipynb
 │
 ├── models/
-│   ├── grouping_logic.py
-│   ├── eligibility_model.py
-│   ├── forecast_model.py
-│   ├── model_metadata.json
-│   └── feature_list.json
+│   └── british_Airways_Booking_Model.pkl
 │
 ├── backend/
-│   └── app/
-│       └── main.py
+│   ├── __init__.py
+│   ├── main.py
+│   ├── predictor.py
+│   └── schemas.py
 │
 ├── frontend/
+│   ├── __init__.py
 │   └── app.py
 │
 ├── dashboards/
 │   ├── Lounge_Demand.pbix
 │   └── screenshots/
+│       ├── British_Airways_Lookup_Table.png
+│       ├── British_Airways_Task_1_Justification.png
+│       ├── flights_by_time_of_day.png
+│       ├── flights_per_aircraft_type.png
+│       ├── flights_per_destination.png
+│       ├── flights_per_month.png
+│       ├── flights_per_region.png
+│       └── top_ten_busiest_routes.png
 │
 ├── reports/
-│   ├── lounge_lookup_table.xlsx
-│   ├── methodology.pdf
-│   └── presentation.pptx
+│   └── BA_Predictive_Booking_Model.pptx
 │
-└── docs/
-    ├── data_dictionary.md
-    ├── assumptions.md
-    └── project_plan.md
-```
+├── docs/
+│   └── findings.md
+│
+├── logs/
+│   └── airline_db_20260225.log
+│
+└── scripts/
+    ├── python/
+    └── sql/
 
 ---
 
@@ -345,7 +352,7 @@ FEATURES = [
 ]
 ```
 
-> ⚠️ **Critical:** The feature list and order must be **identical** between training and inference. The saved pickle stores the `FEATURES` list to guarantee this.
+> **Critical:** The feature list and order must be **identical** between training and inference. The saved pickle stores the `FEATURES` list to guarantee this.
 
 ---
 
